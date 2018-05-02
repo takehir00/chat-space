@@ -35,22 +35,22 @@ Things you may want to cover:
 - belongs_to :user
 -belongs_to :user
 
-##usersテーブル
+## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false, unique: true|
 |email|string|null: false, unique: true|
 |password|string|null: false|
 
-###Association
+### Association
 has_many :members
 
-##groupsテーブル
+## groupsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false, unique: true|
 
-##Association
+## Association
 has_many :members
 
 ## membersテーブル
