@@ -38,7 +38,7 @@ Things you may want to cover:
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false, unique: true, add_index: users, name |
+|name|string|null: false, unique: true, add_index: users, :name |
 
 ### Association
 has_many :groups, through: :members
