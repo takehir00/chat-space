@@ -33,12 +33,12 @@ Things you may want to cover:
 
 ### Association
 - belongs_to :user
--belongs_to :user
+-belongs_to :group
 
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false, unique: true, add_index: users, :name |
+|name|string|null: false, unique: true, add_index :users, :name|
 
 ### Association
 has_many :groups, through: :members
@@ -50,8 +50,8 @@ has_many :messages
 |------|----|-------|
 |name|string|null: false, unique: true|
 
-## Association
-has_many :users, trough: :members
+### Association
+has_many :users, through: :members
 has_many :members
 has_many :messages
 
