@@ -1,0 +1,44 @@
+.chat{
+  height:100%;
+  width: 980px;
+  float: right;
+  .chat__header{
+   height: 100px;
+   border:solid 2px #eeeeee;
+    h2{
+     font-size: 20px;
+     color: #333333;
+     padding: 35px 40px 0px 40px;
+   }
+    p{
+      font-size: 12px;
+      color: #999999;
+      padding: 15px 40px 0px 40px;
+    }
+
+  }
+  .chat__content{
+    height:750px;
+    background-color: #AAAAAA;
+    padding :6px 0 0 40px;
+    .chat__content1{
+      padding-top: 40px;
+    }
+    h2{
+      float: left;
+    }
+    .date{
+      float: left;
+      padding-left: 10px;
+      font-size: 12px;
+      color:#999999;
+    }
+    .message{
+      clear: both;
+      margin-top: 10px;
+    }
+  }
+  .chat__fotter{
+    height: 50px;
+  }
+}
