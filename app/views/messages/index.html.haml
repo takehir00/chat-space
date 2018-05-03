@@ -11,7 +11,11 @@
 
   %nav
     %div.nav__user
-      %p ryousuke_maehira
+      %p.name ryousuke_maehira
+        =link_to 'https://qiita.com/knt45/items/c76b246ad448f3814ae4',class: "nav__user__link1", method: :get do
+          =fa_icon "edit"
+        =link_to 'https://qiita.com/knt45/items/c76b246ad448f3814ae4',class: "nav__user__link2", method: :get do
+          =fa_icon "cog"
 
 
     %div.nav__group

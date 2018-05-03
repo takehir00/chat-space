@@ -5,13 +5,16 @@ nav {
   .nav__user{
    height: 100px;
    background-color: #253141;
-   font-weight: bold ;
-   font-size:16px;
-   color: #ffffff;
-   text-align: center;
-   line-height: 100px;
-   border:solid 2px #eeeeee;
-  }
+    .name {
+
+    }
+    .nav__user__link1{
+      float:right;
+    }
+    .nav__user__link2{
+      float: right;
+    }
+   }
   .nav__group{
     height:800px;
     background-color: #2f3e51;
