@@ -10,7 +10,7 @@
     %p チャットグループが作成されました
 
   %nav
-    %div.nav__user
+    .nav__user
       %ul
         %li.ul__name ryousuke_maehira
         %li.ul__edit
@@ -21,45 +21,31 @@
             =fa_icon "cog"
 
 
-    %div.nav__group
-      %h2 神
-      %p sample
+    .nav__group
+      = render partial: "group", locals: { group_name: "神", message: "sample"}
 
-      %h2 aaaaaaa
-      %p まだメッセージはありません
+      = render partial: "group", locals: { group_name: "aaaaaaa", message: "まだメッセージはありません"}
 
-      %h2 sampleグループ
-      %p まだメッセージはありません
+      = render partial: "group", locals: { group_name: "sampleグループ", message: "まだメッセージはありません"}
 
-  %div.chat
-    %div.chat__header
+  .chat
+    .chat__header
       %h2 sampleグループ
       %p ryousuke maehira
       %div edit
 
-    %div.chat__content
-      %div.chat__content1
-        %h2.chat__content1__name ryousuke maehira
-        %p.chat__content1__date 2016/10/02 06:27:07
-        %p.chat__content1__message なるほど
+    .chat__content
+      = render partial: "content", locals: {name: "ryousuke maehira", date: "2016/10/02 06:27:07", message: "なるほど"}
 
-      %div.chat__content1
-        %h2.chat__content1__name ryousuke maehira
-        %p.chat__content1__date 2016/10/02 06:27:14
-        %p.chat__content1__message 水色きれい
+      = render partial: "content", locals: {name: "ryousuke maehira", date: "2016/10/02 06:27:14", message: "水色きれい"}
 
-      %div.chat__content1
-        %h2.chat__content1__name ryousuke maehira
-        %p.chat__content1__date 2016/10/02 06:29:07
-        %p.chat__content1__message command Enterで送信したい感ある
+      = render partial: "content", locals: {name: "ryousuke maehira", date: "2016/10/02 06:29:07", message: "command Enterで送信したい感ある"}
 
-      %div.chat__content1
-        %h2.chat__content1__name ryousuke maehira
-        %p.chat__content1__date 2016/10/02 06:30:07
-        %p.chat__content1__message お腹すいた
+      = render partial: "content", locals: {name: "ryousuke maehira", date: "2016/10/02 06:30:07", message: "お腹すいた"}
 
 
-    %div.chat__fotter
+
+    .chat__fotter
       %form
         %input{type: "text",class: "chat__fotter__text", placeholder: "type a message"}
         %label
