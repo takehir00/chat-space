@@ -1,22 +1,38 @@
 nav {
   width: 300px;
-  height: 100%;
+  height: 952px;
   float: left;
   .nav__user{
    height: 100px;
    background-color: #253141;
-    .name {
+    .ul__name {
+      float:left;
+      line-height: 100px;
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .ul__edit{
+      float:right;
+      line-height: 100px;
+      padding-right: 20px;
+      .ul__edit__link{
+         color: #ffffff;
+      }
 
     }
-    .nav__user__link1{
-      float:right;
-    }
-    .nav__user__link2{
+    .ul__cog{
       float: right;
+      line-height: 100px;
+      padding-right: 20px;
+      .ul__cog__link{
+        color: #ffffff;
+      }
     }
    }
+
   .nav__group{
-    height:800px;
+    height:852px;
     background-color: #2f3e51;
       h2{
         color: #ffffff;
