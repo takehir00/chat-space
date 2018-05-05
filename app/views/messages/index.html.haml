@@ -10,46 +10,56 @@
     %p チャットグループが作成されました
 
   %nav
-    %div.nav__user
-      %p ryousuke_maehira
+    .nav__user
+      %ul
+        %li.ul__name ryousuke_maehira
+        %li.ul__edit
+          =link_to 'https://qiita.com/knt45/items/c76b246ad448f3814ae4', class: "ul__edit__link", method: :get do
+            =fa_icon "edit"
+        %li.ul__cog
+          =link_to 'https://qiita.com/knt45/items/c76b246ad448f3814ae4', class: "ul__cog__link", method: :get do
+            =fa_icon "cog"
 
 
-    %div.nav__group
-      %h2 神
-      %p sample
+    .nav__group
+      = render partial: "group", locals: { group_name: "神", message: "sample"}
 
-      %h2 aaaaaaa
-      %p まだメッセージはありません
+      = render partial: "group", locals: { group_name: "aaaaaaa", message: "まだメッセージはありません"}
 
-      %h2 sampleグループ
-      %p まだメッセージはありません
+      = render partial: "group", locals: { group_name: "sampleグループ", message: "まだメッセージはありません"}
 
-  %div.chat
-    %div.chat__header
+  .chat
+    .chat__header
       %h2 sampleグループ
       %p ryousuke maehira
+      %div edit
 
-    %div.chat__content
-      %div.chat__content1
-        %h2.name ryousuke maehira
-        %p.date 2016/10/02 06:27:07
-        %p.message なるほど
+    .chat__content
+      = render partial: "content", locals: {name: "ryousuke maehira", date: "2016/10/02 06:27:07", message: "なるほど"}
 
-      %div.chat__content1
-        %h2.name ryousuke maehira
-        %p.date 2016/10/02 06:27:14
-        %p.message 水色きれい
+      = render partial: "content", locals: {name: "ryousuke maehira", date: "2016/10/02 06:27:14", message: "水色きれい"}
 
-      %div.chat__content1
-        %h2.name ryousuke maehira
-        %p.date 2016/10/02 06:29:07
-        %p.message command Enterで送信したい感ある
+      = render partial: "content", locals: {name: "ryousuke maehira", date: "2016/10/02 06:29:07", message: "command Enterで送信したい感ある"}
 
-      %div.chat__content1
-        %h2.name ryousuke maehira
-        %p.date 2016/10/02 06:30:07
-        %p.message お腹すいた
+      = render partial: "content", locals: {name: "ryousuke maehira", date: "2016/10/02 06:30:07", message: "お腹すいた"}
+
+      = render partial: "content", locals: {name: "ryousuke maehira", date: "2016/10/02 06:27:07", message: "なるほど"}
+
+      = render partial: "content", locals: {name: "ryousuke maehira", date: "2016/10/02 06:27:14", message: "水色きれい"}
+
+      = render partial: "content", locals: {name: "ryousuke maehira", date: "2016/10/02 06:29:07", message: "command Enterで送信したい感ある"}
+
+      = render partial: "content", locals: {name: "ryousuke maehira", date: "2016/10/02 06:30:07", message: "お腹すいた"}
 
 
-    %div.chat__fotter
+
+    .chat__fotter
+      %form
+        %input{type: "text",class: "chat__fotter__text", placeholder: "type a message"}
+        %label
+          %span.chat__fotter__icon
+            =fa_icon "image"
+          %input{type: "file", class: "chat__fotter__filesend"}
+        %input{type: "submit",class: "chat__fotter__submit", value:"send"}
+
 
