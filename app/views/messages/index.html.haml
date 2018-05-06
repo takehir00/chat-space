@@ -12,13 +12,22 @@
   %nav
     .nav__user
       %ul
-        %li.ul__name ryousuke_maehira
-        %li.ul__edit
-          =link_to 'https://qiita.com/knt45/items/c76b246ad448f3814ae4', class: "ul__edit__link", method: :get do
-            =fa_icon "edit"
-        %li.ul__cog
-          =link_to 'https://qiita.com/knt45/items/c76b246ad448f3814ae4', class: "ul__cog__link", method: :get do
-            =fa_icon "cog"
+        %li.ul__name
+          = current_user.name
+        - if user_signed_in?
+          %li.ul__edit
+            =link_to 'https://qiita.com/knt45/items/c76b246ad448f3814ae4', class: "ul__edit__link", method: :get do
+              =fa_icon "edit"
+          %li.ul__cog
+            =link_to edit_user_path(current_user), class: "ul__cog__link", method: :get do
+              =fa_icon "cog"
+        - else
+          %li.ul__edit
+            =link_to 'https://qiita.com/knt45/items/c76b246ad448f3814ae4', class: "ul__edit__link", method: :get do
+              =fa_icon "edit"
+          %li.ul__cog
+            =link_to new_user_registration, class: "ul__cog__link", method: :get do
+              =fa_icon "cog"
 
 
     .nav__group
