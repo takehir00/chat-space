@@ -9,6 +9,8 @@
   %header
     %p チャットグループが作成されました
 
+
+
   %nav
     .nav__user
       %ul
@@ -16,7 +18,7 @@
           = current_user.name
         - if user_signed_in?
           %li.ul__edit
-            =link_to 'https://qiita.com/knt45/items/c76b246ad448f3814ae4', class: "ul__edit__link", method: :get do
+            =link_to new_group_path, class: "ul__edit__link", method: :get do
               =fa_icon "edit"
           %li.ul__cog
             =link_to edit_user_path(current_user), class: "ul__cog__link", method: :get do
@@ -31,11 +33,12 @@
 
 
     .nav__group
-      = render partial: "group", locals: { group_name: "神", message: "sample"}
-
-      = render partial: "group", locals: { group_name: "aaaaaaa", message: "まだメッセージはありません"}
-
-      = render partial: "group", locals: { group_name: "sampleグループ", message: "まだメッセージはありません"}
+      - current_user.groups.each do |group|
+        = link_to group_messages_path(group) do
+          %h2
+            = group.name
+          %p
+            メッセージはまだありません
 
   .chat
     .chat__header
