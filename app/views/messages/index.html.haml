@@ -42,36 +42,40 @@
 
   .chat
     .chat__header
-      %h2 sampleグループ
-      %p ryousuke maehira
+      %h2
+        =@group.name
+      %p=current_user.name
       %div edit
 
     .chat__content
-      = render partial: "content", locals: {name: "ryousuke maehira", date: "2016/10/02 06:27:07", message: "なるほど"}
+      = render @messages
 
-      = render partial: "content", locals: {name: "ryousuke maehira", date: "2016/10/02 06:27:14", message: "水色きれい"}
 
-      = render partial: "content", locals: {name: "ryousuke maehira", date: "2016/10/02 06:29:07", message: "command Enterで送信したい感ある"}
+      /= render partial: "content", locals: {name: "ryousuke maehira", date: "2016/10/02 06:27:07", message: "なるほど"}
 
-      = render partial: "content", locals: {name: "ryousuke maehira", date: "2016/10/02 06:30:07", message: "お腹すいた"}
+      /= render partial: "content", locals: {name: "ryousuke maehira", date: "2016/10/02 06:27:14", message: "水色きれい"}
 
-      = render partial: "content", locals: {name: "ryousuke maehira", date: "2016/10/02 06:27:07", message: "なるほど"}
+      /= render partial: "content", locals: {name: "ryousuke maehira", date: "2016/10/02 06:29:07", message: "command Enterで送信したい感ある"}
 
-      = render partial: "content", locals: {name: "ryousuke maehira", date: "2016/10/02 06:27:14", message: "水色きれい"}
+      /= render partial: "content", locals: {name: "ryousuke maehira", date: "2016/10/02 06:30:07", message: "お腹すいた"}
 
-      = render partial: "content", locals: {name: "ryousuke maehira", date: "2016/10/02 06:29:07", message: "command Enterで送信したい感ある"}
+      /= render partial: "content", locals: {name: "ryousuke maehira", date: "2016/10/02 06:27:07", message: "なるほど"}
 
-      = render partial: "content", locals: {name: "ryousuke maehira", date: "2016/10/02 06:30:07", message: "お腹すいた"}
+      /= render partial: "content", locals: {name: "ryousuke maehira", date: "2016/10/02 06:27:14", message: "水色きれい"}
+
+      /= render partial: "content", locals: {name: "ryousuke maehira", date: "2016/10/02 06:29:07", message: "command Enterで送信したい感ある"}
+
+      /= render partial: "content", locals: {name: "ryousuke maehira", date: "2016/10/02 06:30:07", message: "お腹すいた"}
 
 
 
     .chat__fotter
-      %form
-        %input{type: "text",class: "chat__fotter__text", placeholder: "type a message"}
-        %label
+      = form_for [@group, @message] do |f|
+        = f.text_field :body, class: 'chat__fotter__text', placeholder: 'type a message'
+        = f.label :avatar do
           %span.chat__fotter__icon
             =fa_icon "image"
-          %input{type: "file", class: "chat__fotter__filesend"}
-        %input{type: "submit",class: "chat__fotter__submit", value:"send"}
+          = f.file_field :avatar, class: 'chat__fotter__filesend'
+        = f.submit 'Send', class: 'chat__fotter__submit'
 
 

@@ -1,0 +1,9 @@
+%h2.chat__content1__name
+  =message.user.name
+%p.chat__content1__date
+  =message.created_at
+
+- if message.body.present?
+  %p.chat__content1__message
+    =message.body
+= image_tag message.avatar.url if message.avatar.present?
