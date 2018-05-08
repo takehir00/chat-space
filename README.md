@@ -29,7 +29,7 @@
 - has_many :members
 - has_many :messages
 
-## membersテーブル
+## group_to_userテーブル
 
 |Column|Type|Options|
 |------|----|-------|
