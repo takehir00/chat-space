@@ -20,7 +20,6 @@ RSpec.describe Message, type: :model do
       it 'is invalid without content and image' do
         message = build(:message, body: nil, avatar: nil)
         message.valid?
-        binding.pry
         expect(message.errors[:body]).to include('を入力してください')
       end
 
