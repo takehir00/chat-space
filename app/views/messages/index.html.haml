@@ -23,13 +23,6 @@
           %li.ul__cog
             =link_to edit_user_path(current_user), class: "ul__cog__link", method: :get do
               =fa_icon "cog"
-        - else
-          /%li.ul__edit
-            /=link_to 'https://qiita.com/knt45/items/c76b246ad448f3814ae4', class: "ul__edit__link", method: :get do
-              /=fa_icon "edit"
-          %li.ul__cog
-            =link_to new_user_registration, class: "ul__cog__link", method: :get do
-              =fa_icon "cog"
 
 
     .nav__group
