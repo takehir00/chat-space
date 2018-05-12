@@ -4,6 +4,7 @@
   =message.created_at
 
 - if message.body.present?
-  %p.chat__content1__message
+  .chat__content1__message
     =message.body
-= image_tag message.avatar.url if message.avatar.present?
+    %div
+    = image_tag message.avatar.url if message.avatar.present?
