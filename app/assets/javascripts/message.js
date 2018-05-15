@@ -1,5 +1,6 @@
 $(function() {
   function buildHTML(message){
+    var image = ""
     if (message.image_url != null){
       var image = `<img src = "${message.image_url}">`
     }
@@ -9,8 +10,7 @@ $(function() {
                      ${message.created_at}</p>
                  <div class = "chat__content1__message">
                        ${message.body}</div>
-
-                <div>
+                  <div>
                   ${image}</div>`
     return html;
   }
@@ -26,14 +26,12 @@ $(function() {
         processData: false,
         contentType: false
       })
-
       .done(function(data){
-        var html = buildHTML(data)
-        $('.chat__content').append(html)
-        var target = $(".chat__content").get(0).scrollHeight;
-        $('.chat__content').animate({scrollTop: target}, 'slow');
+      var html = buildHTML(data)
+      $('.chat__content').append(html)
+      var target = $(".chat__content").get(0).scrollHeight;
+      $('.chat__content').animate({scrollTop: target}, 'slow');
       })
-
       .fail(function(){
       alert('error');
     })
