@@ -53,8 +53,8 @@
     .chat__fotter
       = form_for [@group, @message], html: {id: "new_message"} do |f|
         = f.text_field :body, class: 'chat__fotter__text', placeholder: 'type a message'
-        = f.label :avatar do
+        = f.label :image do
           %span.chat__fotter__icon
             =fa_icon "image"
-          = f.file_field :avatar, class: 'chat__fotter__filesend'
+          = f.file_field :image, class: 'chat__fotter__filesend'
         = f.submit 'Send', class: 'chat__fotter__submit'

@@ -4,7 +4,7 @@ RSpec.describe Message, type: :model do
   describe '#create' do
     context 'can save' do
       it 'is valid with content' do
-        expect(build(:message, avatar: nil)).to be_valid
+        expect(build(:message, image: nil)).to be_valid
       end
 
       it 'is valid with image' do
@@ -18,7 +18,7 @@ RSpec.describe Message, type: :model do
 
     context 'can not save' do
       it 'is invalid without content and image' do
-        message = build(:message, body: nil, avatar: nil)
+        message = build(:message, body: nil, image: nil)
         message.valid?
         expect(message.errors[:body]).to include('を入力してください')
       end

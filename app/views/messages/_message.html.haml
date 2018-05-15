@@ -7,4 +7,4 @@
   .chat__content1__message
     =message.body
     %div
-    = image_tag message.avatar.url if message.avatar.present?
+    = image_tag message.image.url if message.image.present?
