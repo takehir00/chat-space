@@ -51,7 +51,7 @@
 
 
     .chat__fotter
-      = form_for [@group, @message], html: {id: "new_message"} do |f|
+      = form_for [@group, @message], html: {class: "new_message"} do |f|
         = f.text_field :body, class: 'chat__fotter__text', placeholder: 'type a message'
         = f.label :avatar do
           %span.chat__fotter__icon
