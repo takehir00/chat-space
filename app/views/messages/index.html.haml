@@ -7,12 +7,11 @@
         = current_user.name
       - if user_signed_in?
         %li.ul__edit
-          =link_to new_group_path, class: "ul__edit__link", method: :get do
+          = link_to new_group_path, class: "ul__edit__link", method: :get do
             =fa_icon "edit"
         %li.ul__cog
-          =link_to edit_user_path(current_user), class: "ul__cog__link", method: :get do
+          = link_to edit_user_path(current_user), class: "ul__cog__link", method: :get do
             =fa_icon "cog"
-
 
   .nav__group
     - current_user.groups.each do |group|
@@ -21,11 +20,10 @@
           = group.name
         %p
           = group.show_last_message
-
 .chat
   .chat__header
     %h2
-      =@group.name
+      = @group.name
     %p
       - @group.users.each do |user|
         =user.name
@@ -36,9 +34,6 @@
 
   .chat__content
     = render @messages
-
-
-
   .chat__fotter
     = form_for [@group, @message] do |f|
       = f.text_field :body, class: 'chat__fotter__text', placeholder: 'type a message'
