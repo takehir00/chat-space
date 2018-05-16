@@ -6,5 +6,5 @@
 - if message.body.present?
   .chat__content1__message
     =message.body
-    %div
+  .chat__content1__image
     = image_tag message.image.url if message.image.present?

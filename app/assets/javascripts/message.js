@@ -32,7 +32,6 @@ $(function() {
       $('#new_message').get(0).reset();
       var target = $(".chat__content").get(0).scrollHeight;
       $('.chat__content').animate({scrollTop: target}, 'slow');
-      //$('#message_body').val("");
       })
       .fail(function(){
       alert('error');
