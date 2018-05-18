@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :message do
     body Faker::Lorem.sentence
-    avatar File.open("#{Rails.root}/public/images/forest.jpeg")
+    image File.open("#{Rails.root}/public/images/river2.jpeg")
     user
     group
   end

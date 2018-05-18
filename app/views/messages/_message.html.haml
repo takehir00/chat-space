@@ -1,9 +1,10 @@
 %h2.chat__content1__name
-  =message.user.name
+  = message.user.name
 %p.chat__content1__date
-  =message.created_at
+  = message.created_at.to_s(:datetime)
 
 - if message.body.present?
-  %p.chat__content1__message
-    =message.body
-= image_tag message.avatar.url if message.avatar.present?
+  .chat__content1__message
+    = message.body
+  .chat__content1__image
+    = image_tag message.image.url if message.image.present?
