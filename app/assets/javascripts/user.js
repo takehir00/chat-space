@@ -26,7 +26,6 @@ $(document).on("turbolinks:load", function() {
       ("#user-search-result").empty();
     }else{
 
-
     $.ajax({
       type:'GET',
       url:'/users',
