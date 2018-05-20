@@ -7,7 +7,7 @@ $(document).on("turbolinks:load", function() {
                 <p class="chat-group-user__name">
                   ${user.name}
                 </p>
-                <a class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id = ${user.id} data-user-name= ${user.name}>
+                <a class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id=${user.id} data-user-name=${user.name}>
                   追加
                 </a>
                 </div>`
@@ -16,7 +16,7 @@ $(document).on("turbolinks:load", function() {
 
   function appendUserResult(userId, userName) {
     var html =`<div class='chat-group-user clearfix js-chat-member' id='chat-group-user-8'>
-                <input name='group[user_ids][]' type='hidden' value= '${userId}'>
+                <input name='group[user_ids][]' type='hidden' value='${userId}' class='chat-group-user_id'>
                 <p class='chat-group-user__name'>
                   ${userName}
                 </p>
@@ -29,28 +29,31 @@ $(document).on("turbolinks:load", function() {
 
   $("#user-search-field").on("keyup", function() {
     var input = $("#user-search-field").val();
-
+    var resultUserIds = []
+    $(".chat-group-user_id").each(function(){
+      resultUserIds.push(parseInt($(this).val()))
+    })
     if(input.length === 0 || input === ""){
       $("#user-search-result").empty();
-    }else{
-      $.ajax({
-        type:'GET',
-        url:'/users',
-        data: {keyword: input},
-        dataType:'json'
-      })
-
-      .done(function(users){
-        $("#user-search-result").empty();
-        users.forEach(function(user){
-          appendUser(user);
-        });
-    })
-
-      .fail(function() {
-        alert('ユーザー検索に失敗しました');
-      })
+      return;
     }
+    $.ajax({
+      type:'GET',
+      url:'/users',
+      data: {keyword: input},
+      dataType:'json'
+    })
+    .done(function(users){
+      $("#user-search-result").empty();
+      users.forEach(function(user){
+        if (resultUserIds.indexOf(user.id) === -1){
+          appendUser(user);
+        }
+      });
+    })
+    .fail(function(){
+      alert('ユーザー検索に失敗しました');
+    });
   });
 
   $("#user-search-result").on("click", ".chat-group-user__btn--add", function(){
@@ -64,5 +67,4 @@ $(document).on("turbolinks:load", function() {
   $("#chat-group-users").on("click",".chat-group-user__btn--remove", function(){
     $(this).parent().remove();
   })
-
 });
