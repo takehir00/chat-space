@@ -30,8 +30,8 @@ $(document).on("turbolinks:load", function() {
   $("#user-search-field").on("keyup", function() {
     var input = $("#user-search-field").val();
 
-    if(input.length === 0 || input == ""){
-      ("#user-search-result").empty();
+    if(input.length === 0 || input === ""){
+      $("#user-search-result").empty();
     }else{
       $.ajax({
         type:'GET',
