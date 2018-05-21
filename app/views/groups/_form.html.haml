@@ -27,7 +27,8 @@
       #chat-group-users
         #chat-group-user-8.chat-group-user.clearfix.js-chat-member
           %p.chat-group-user__name
-            = current_user.name
+          - @users.each do |user|
+            = user.name
 
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
