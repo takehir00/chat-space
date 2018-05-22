@@ -46,7 +46,7 @@ $(function() {
   });
 
   var interval = setInterval(function(){
-    if (window.location.pathname.match(/\/groups\/\d+\/messages/)){
+    if (location.pathname.match(/\/groups\/\d+\/messages/)){
       var url = location.pathname
       var message_id = $('.chat__content .chat__content1__parent:last-child').data('message-id')
       console.log(message_id)
