@@ -1,6 +1,6 @@
 .chat{
   height:100%;
-  width: 980px;
+  width: calc(100vw - 300px);
   float: right;
   .chat__header{
    border:solid 2px #eeeeee;
@@ -59,7 +59,7 @@
     .chat__fotter__text{
       margin: 20px 0 20px 40px;
       height: 50px;
-      width: 804.77px;
+      //width: 804.77px;
     }
     .chat__fotter__icon{
       position: absolute;
