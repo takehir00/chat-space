@@ -1,40 +1,22 @@
 $(function() {
   function buildHTML(message){
-    var image = ""
-    if (message.image_url != null){
-      var image = `<img src = "${message.image_url}">`
-    }
-     var html = `<h2 class = "chat__content1__name">
-                     ${message.user_name}</h2>
-                 <p class = "chat__content1__date">
-                     ${message.created_at}</p>
-                 <div class = "chat__content1__message">
-                       ${message.body}</div>
-                  <div>
-                  ${image}</div>`
-    return html;
-  }
-
-  function appendHTML(message){
     var body = ""
     var image= ""
     if (message.body != null){
       var body = message.body
     }
     if (message.image_url != null){
-      image = `<img src="${message.image_url}">`
+      var image = `<img src="${message.image_url}">`
     }
-    var html = `<h2 class=chat__content1__name>
-                  ${message.user_name}
-                </h2>
-                <p class=chat__content1__date>
-                  ${message.created_at}
-                </p>
-                <div class=chat__content1__message>
-                  ${body}
-                </div>
-                <div class=chat__content1__image>
-                  ${image}
+    var html = `<div class="chat__content1__parent" data-message-id=${message.id}>
+                  <h2 class="chat__content1__name">
+                     ${message.user_name}</h2>
+                  <p class="chat__content1__date">
+                     ${message.created_at}</p>
+                  <div class="chat__content1__message">
+                       ${message.body}</div>
+                  <div>
+                  ${image}</div>
                 </div>`
     return html;
   }
@@ -64,19 +46,23 @@ $(function() {
   });
 
   var interval = setInterval(function(){
-    if (window.location.href.match(/\/groups\/\d+\/messages/)){
+    if (window.location.pathname.match(/\/groups\/\d+\/messages/)){
       var url = location.pathname
+      var message_id = $('.chat__content .chat__content1__parent:last-child').data('message-id')
+      console.log(message_id)
       $.ajax({
         url: url,
         type: "GET",
+        data: {message_id: message_id},
         dataType: 'json'
       })
       .done(function(messages){
-        $('.chat__content').empty();
-        messages.forEach(function(message){
-          var html = appendHTML(message)
-          $('.chat__content').append(html)
-        })
+        if(messages != null){
+          messages.forEach(function(message){
+            var html = buildHTML(message)
+            $('.chat__content').append(html)
+          })
+        }
       })
       .fail(function(){
         alert('自動更新に失敗しました');
