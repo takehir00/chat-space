@@ -14,6 +14,31 @@ $(function() {
                   ${image}</div>`
     return html;
   }
+
+  function appendHTML(message){
+    var body = ""
+    var image= ""
+    if (message.body != null){
+      var body = message.body
+    }
+    if (message.image_url != null){
+      image = `<img src="${message.image_url}">`
+    }
+    var html = `<h2 class=chat__content1__name>
+                  ${message.user_name}
+                </h2>
+                <p class=chat__content1__date>
+                  ${message.created_at}
+                </p>
+                <div class=chat__content1__message>
+                  ${body}
+                </div>
+                <div class=chat__content1__image>
+                  ${image}
+                </div>`
+    return html;
+  }
+
   $('#new_message').on('submit', function(e){
       e.preventDefault();
       var formData = new FormData(this);
@@ -37,4 +62,25 @@ $(function() {
       alert('error');
     })
   });
+
+  var interval = setInterval(function(){
+    if (window.location.href.match(/\/groups\/\d+\/messages/)){
+      var url = location.pathname
+      $.ajax({
+        url: url,
+        type: "GET",
+        dataType: 'json'
+      })
+      .done(function(messages){
+        $('.chat__content').empty();
+        messages.forEach(function(message){
+          var html = appendHTML(message)
+          $('.chat__content').append(html)
+        })
+      })
+      .fail(function(){
+        alert('自動更新に失敗しました');
+      });
+    }else{
+  }},5000);
 });
