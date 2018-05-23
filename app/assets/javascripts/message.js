@@ -47,11 +47,9 @@ $(function() {
 
   var interval = setInterval(function(){
     if (location.pathname.match(/\/groups\/\d+\/messages/)){
-      var url = location.pathname
       var message_id = $('.chat__content .chat__content1__parent:last-child').data('message-id')
-      console.log(message_id)
       $.ajax({
-        url: url,
+        url: location.pathname,
         type: "GET",
         data: {message_id: message_id},
         dataType: 'json'
