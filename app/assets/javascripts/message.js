@@ -1,19 +1,23 @@
 $(function() {
   function buildHTML(message){
-    var image = ""
+    var image= ""
+    var body = message.body
     if (message.image_url != null){
-      var image = `<img src = "${message.image_url}">`
+      var image = `<img src="${message.image_url}">`
     }
-     var html = `<h2 class = "chat__content1__name">
+    var html = `<div class="chat__content1__parent" data-message-id=${message.id}>
+                  <h2 class="chat__content1__name">
                      ${message.user_name}</h2>
-                 <p class = "chat__content1__date">
+                  <p class="chat__content1__date">
                      ${message.created_at}</p>
-                 <div class = "chat__content1__message">
+                  <div class="chat__content1__message">
                        ${message.body}</div>
                   <div>
-                  ${image}</div>`
+                  ${image}</div>
+                </div>`
     return html;
   }
+
   $('#new_message').on('submit', function(e){
       e.preventDefault();
       var formData = new FormData(this);
@@ -37,4 +41,27 @@ $(function() {
       alert('error');
     })
   });
+
+  var interval = setInterval(function(){
+    if (location.pathname.match(/\/groups\/\d+\/messages/)){
+      var message_id = $('.chat__content .chat__content1__parent:last-child').data('message-id')
+      $.ajax({
+        url: location.pathname,
+        type: "GET",
+        data: {message_id: message_id},
+        dataType: 'json'
+      })
+      .done(function(messages){
+        if(messages != null){
+          messages.forEach(function(message){
+            var html = buildHTML(message)
+            $('.chat__content').append(html)
+          })
+        }
+      })
+      .fail(function(){
+        alert('自動更新に失敗しました');
+      });
+    }else{
+  }},5000);
 });
