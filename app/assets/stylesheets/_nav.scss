@@ -2,7 +2,8 @@ nav {
   width: 300px;
   float: left;
   .nav__user{
-   height: 100px;
+    height:15vh;
+   //height: 100px;
    background-color: #253141;
     .ul__name {
       float:left;
@@ -31,7 +32,9 @@ nav {
    }
 
   .nav__group{
-    height:585px;
+    height:85vh;
+    //height:585px;
+    //height: calc(100vh - 100px);
     background-color: #2f3e51;
       h2{
         color: #ffffff;
