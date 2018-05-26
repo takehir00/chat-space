@@ -29,6 +29,7 @@
           %p.chat-group-user__name
           - if @users.present?
             - @users.each do |user|
+              %input{name: 'group[user_ids][]', type: 'hidden', value: user.id, class: 'chat-group-user_id'}
               = user.name
 
   .chat-group-form__field.clearfix
