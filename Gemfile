@@ -67,7 +67,7 @@ gem 'erb2haml'
 gem 'font-awesome-rails'
 gem 'devise'
 gem 'carrierwave', '~> 1.0'
-gem 'fog-aws'
+gem 'fog', '~> 1.41.0'
 gem 'mini_magick'
 
 group :production do

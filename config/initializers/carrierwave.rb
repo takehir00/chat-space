@@ -1,6 +1,6 @@
 require 'carrierwave/storage/abstract'
 require 'carrierwave/storage/file'
-require 'fog/aws'
+require 'carrierwave/storage/fog'
 
 CarrierWave.configure do |config|
   config.storage = :fog
