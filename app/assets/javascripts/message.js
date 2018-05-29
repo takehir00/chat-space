@@ -18,7 +18,7 @@ $(function() {
     return html;
   }
 
-  $('#new_message').on('submit', function(e){
+  $('#new_message').on('submit',function(e){
       e.preventDefault();
       var formData = new FormData(this);
       var url = $(this).attr('action')
@@ -36,9 +36,11 @@ $(function() {
       $('#new_message').get(0).reset();
       var target = $(".chat__content").get(0).scrollHeight;
       $('.chat__content').animate({scrollTop: target}, 'slow');
+      $('.chat__fotter__submit').prop('disabled', false);
       })
       .fail(function(){
       alert('error');
+      $('.chat__fotter__submit').prop('disabled', false);
     })
   });
 
